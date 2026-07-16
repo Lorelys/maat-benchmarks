@@ -1,6 +1,6 @@
 # Maat Benchmarks — Results & Methodology
 
-Measured results and methodology for **Maat** - maat.synwe.ai, a deterministic governance layer that validates handoffs **between** agents in multi-agent AI workflows. This repository publishes the **benchmark designs, methodology, and complete measured results** referenced in the Maat whitepaper.
+Measured results and methodology for **Maat**, a deterministic governance layer that validates handoffs between agents in multi-agent AI workflows. This repository publishes the **benchmark designs, methodology, and complete measured results** referenced in the Maat whitepaper.
 
 These are the benchmarks behind the claim that a deterministic layer catches inter-agent handoff failures — the failure class UC Berkeley's [MAST study](https://github.com/multi-agent-systems-failure-taxonomy/MAST) measured as ~37% of all multi-agent failures — before they propagate.
 
@@ -48,10 +48,10 @@ Across six controlled benchmarks and 500+ trials, on a unified deterministic 7-c
 | Hospital triage | 10 | 6.12 | 6.88 | **+12.4%** | $0.0249 | $0.0127 | **−49%** |
 | Software dev team | 12 | 6.24 | 6.48 | +3.8% | $0.0568 | $0.0522 | −8% |
 | Enterprise discovery | 12 | 6.50 | 7.00 | **+7.7%** | $0.0868 | $0.0862 | ~neutral |
-| E-commerce agency | 15 | 6.24 | 6.76 | **+8.3%** | $0.2084 | $0.1871 | −10% |
+| E-commerce agency | 15 | 6.22 | 6.89 | **+10.7%** | $0.2090 | $0.1740 | **−17%** |
 | Health insurance | 10 | 5.42 | 5.63 | +3.9% | $0.043 | $0.027 | **−37%** |
 
-*Direction positive on every benchmark. Zero false positives across the deterministic rubric.*
+*Direction positive on every benchmark. No semantic false positives on seven of the eight insurance profiles; one documented collateral trip is reported in `results/` rather than tuned away.*
 
 ### Specific defects caught
 
