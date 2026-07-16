@@ -1,6 +1,6 @@
 # Maat Benchmarks — Results & Methodology
 
-Measured results and methodology for **Maat**, a deterministic governance layer that validates handoffs between agents in multi-agent AI workflows. This repository publishes the **benchmark designs, methodology, and complete measured results** referenced in the Maat whitepaper.
+Measured results and methodology for **Maat** - maat.synwe.ai, a deterministic governance layer that validates handoffs **between** agents in multi-agent AI workflows. This repository publishes the **benchmark designs, methodology, and complete measured results** referenced in the Maat whitepaper.
 
 These are the benchmarks behind the claim that a deterministic layer catches inter-agent handoff failures — the failure class UC Berkeley's [MAST study](https://github.com/multi-agent-systems-failure-taxonomy/MAST) measured as ~37% of all multi-agent failures — before they propagate.
 
