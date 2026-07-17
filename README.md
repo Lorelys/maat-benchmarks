@@ -49,9 +49,9 @@ Across six controlled benchmarks and 500+ trials, on a unified deterministic 7-c
 | Software dev team | 12 | 6.24 | 6.48 | +3.8% | $0.0568 | $0.0522 | −8% |
 | Enterprise discovery | 12 | 6.50 | 7.00 | **+7.7%** | $0.0868 | $0.0862 | ~neutral |
 | E-commerce agency | 15 | 6.22 | 6.89 | **+10.7%** | $0.2090 | $0.1740 | **−17%** |
-| Health insurance | 10 | 5.42 | 5.63 | +3.9% | $0.043 | $0.027 | **−37%** |
+| Health insurance | 10 | 5.667 | 5.833 | +2.9% | $0.0412 | $0.0185 | **−55%** |
 
-*Direction positive on every benchmark. No semantic false positives on seven of the eight insurance profiles; one documented collateral trip is reported in `results/` rather than tuned away.*
+*Direction positive on every benchmark. On the insurance grid, 11 documented false positives remain — all `REQ_VALUE_MISMATCH` or `INFO_EMPTY` on two profiles (excluded treatment, fraud) where the model correctly denies the claim while the anchor’s expected payout still reflects the clean-claim value: an anchor-configuration boundary, reported in `results/` rather than tuned away.*
 
 ### Specific defects caught
 
