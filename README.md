@@ -23,6 +23,7 @@ These are the benchmarks behind the claim that a deterministic layer catches int
 
 - **`results/`** — per-benchmark summaries, gate reports, and the consolidated cross-benchmark table (`WORKSTREAM_B_CONSOLIDATED.md`). Every number, every arm, every profile.
 - **`benchmarks/*/`** — per-benchmark result summaries and prose design descriptions.
+- **`kim-comparison/`** — standalone follow-on studies on the insurance fleet: topology ablation (T2: pipe / independent / centralized) and prompt-specification ablation (T3: rich vs SPEC-MIN), framed against Kim et al. ([arXiv:2512.08296](https://arxiv.org/abs/2512.08296)). Reports, JSONLs, figures, and analysis-only verify code. See `kim-comparison/README.md`.
 
 ---
 
@@ -79,7 +80,7 @@ On the workflows where Maat halted defective chains early, it cut wasted compute
 
 ## What's not here
 
-This repository publishes the **designs and results**. It does not include the runnable benchmark harness or the Maat conductor engine — those are the core intellectual property and are available for evaluation.
+This repository publishes the **designs and results**. It does not include the runnable benchmark harness or the Maat conductor engine — those are the core intellectual property and are available for evaluation. The `kim-comparison/` package includes **analysis-only** code (`code/verify.sh`) to regenerate tables from banked JSONLs; it still does not ship the full harness or conductor.
 
 If you want to inspect the full harness, reproduce the results end-to-end, or evaluate Maat on your own workflows, **contact the Maat team** (see the whitepaper for details). We're glad to give serious evaluators a running instance and the harness under evaluation terms.
 
@@ -87,7 +88,7 @@ If you want to inspect the full harness, reproduce the results end-to-end, or ev
 
 ## Reading the results
 
-Start with `results/WORKSTREAM_B_CONSOLIDATED.md` for the cross-benchmark table, then drill into any benchmark's `RESULTS_SUMMARY.md` for per-profile detail and its `gate_report.md` (where present) for which gate caught what. The insurance and e-commerce benchmarks include the most detailed gate-level breakdowns.
+Start with `results/WORKSTREAM_B_CONSOLIDATED.md` for the cross-benchmark table, then drill into any benchmark's `RESULTS_SUMMARY.md` for per-profile detail and its `gate_report.md` (where present) for which gate caught what. The insurance and e-commerce benchmarks include the most detailed gate-level breakdowns. For the Kim-comparison topology and specification studies, start at `kim-comparison/README.md`.
 
 ---
 
