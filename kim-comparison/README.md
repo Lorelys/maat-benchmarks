@@ -15,7 +15,12 @@ claimant-identity drift). Maat gate/REQ/Gate7 contracts are held fixed
 within each study; T2 varies graph structure, T3 varies specialist prompt
 richness only.
 
-**Data license:** [AUTHOR: choose license]
+**Data license:** Benchmark designs and banked results in this package are
+© 2026 SynWe Group s.r.o. / Uliana Elina, provided for inspection and
+evaluation. Redistribution or commercial use requires permission.
+Analysis-only verify code is included under the same terms. The Maat
+conductor and full harness remain available under separate evaluation
+license.
 
 ---
 
