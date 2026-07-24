@@ -1,0 +1,9 @@
+spec_level,source,topology,arm,n,manif,prop,catch_manifested,outcome_counts,self_corr,harm_sum,cost
+rich,T2 (reused),pipe,off,7,3/6 (50%),50%,n/a,4/3/0/0/0,3/6,1270.00,0.0369
+rich,T2 (reused),pipe,intervene,7,—,0%,100% (5/5),2/0/5/0/0,—,0.00,0.0195
+rich,T2 (reused),independent,off,7,0/6 (0%),0%,n/a,6/1/0/0/0,5/6,6930.00,0.0338
+rich,T2 (reused),independent,intervene,7,—,0%,100% (3/3),4/0/3/0/0,—,0.00,0.0263
+min,T3 live,pipe,off,7,0/6 (0%),0%,n/a,7/0/0/0/0,6/6,0.00,0.0361
+min,T3 live,pipe,intervene,7,—,0%,n/a (0 manifested),7/0/0/0/0,—,0.00,0.0359
+min,T3 live,independent,off,7,1/6 (17%),0%,n/a,6/1/0/0/0,5/6,769.99,0.0326
+min,T3 live,independent,intervene,7,—,0%,100% (2/2),5/0/2/0/0,—,0.00,0.0278
