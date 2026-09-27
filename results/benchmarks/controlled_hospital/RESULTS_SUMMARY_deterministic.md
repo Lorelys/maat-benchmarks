@@ -1,5 +1,7 @@
 # controlled_hospital — Deterministic Re-score (7 business checks)
 
+> **Correction (September 2026).** The halt-credited scores in this file over-count governed-arm results: any halt before the final artefact received full marks, including halts on correct output. See [`CORRECTIONS.md`](../../../CORRECTIONS.md) for the corrected figures and the hand review of every halt.
+
 **Transcripts:** 75 from `experiments/runs/controlled_hospital/grid_3arm`
 **Scorer:** `scorer_deterministic.py` — 7 boolean checks (0–7), zero LLM.
 **Legacy scorer:** `scorer.py` — 0–3, zero LLM.

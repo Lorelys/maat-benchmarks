@@ -1,5 +1,7 @@
 # Controlled E-Commerce Agency Benchmark — Final Results Summary
 
+> **Correction (September 2026).** Halted governed trials here were credited `halt_prevented_defect` when *any* blocker fired, not only a finding matching the injected defect (1 of 18 intervene halts was unrelated). The un-injected revenue mis-report was recorded as a warning and did not stop the chain. See [`CORRECTIONS.md`](../../../CORRECTIONS.md).
+
 **Grid status:** 135/135 trials complete (9 failure profiles × 3 arms × 5 seeds)  
 **Model:** Claude Haiku 4.5 (`claude-haiku-4-5-20251001`)  
 **Total grid cost:** $25.48 (summed from trial JSON `usage.cost_usd`, excluding baseline)  

@@ -1,5 +1,7 @@
 # Insurance Claims — Gate Report
 
+> **Correction (September 2026).** Section (e) below ("False positives: none detected") is superseded. A hand review found 6 governed-arm halts on correct output in this benchmark, and one warn-arm trial where an excluded treatment was approved without a finding. See [`CORRECTIONS.md`](../../../CORRECTIONS.md).
+
 Trials analyzed: **72** (8 profiles × 3 arms × 3 seeds)
 Source: `/Users/ulianaelina/maat-api/experiments/runs/controlled_insurance_claims/grid`
 

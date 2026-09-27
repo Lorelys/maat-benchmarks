@@ -41,6 +41,23 @@ See `results/WORKSTREAM_B_CONSOLIDATED.md` for the full cross-benchmark detail. 
 
 ## Results at a glance
 
+> **Correction (September 2026).** The table originally published here over-counted governed-arm results. Three scorers credited any early halt as a prevented defect, and a hand review found 35 of 94 governed-arm halts were false alarms. The corrected table is below; the original table is kept for the record. Full details: [`CORRECTIONS.md`](CORRECTIONS.md).
+
+Across six controlled benchmarks and 522 trials, on a deterministic 7-check rubric (0–7) with **no language model in the validation path or the scoring path**:
+
+| Benchmark | Agents | Δ correctness (paired, corrected) | n | Cost change (paired) | Halts: attributable / false alarm |
+|-----------|--------|-----------------------------------|---|----------------------|------------------------------------|
+| B2B financial | 6 | +29.1% | 17/25 | −47% | 12 / 8 |
+| Hospital triage | 10 | +11.1% | 9/25 | −21% | 5 / 17 |
+| Software dev team | 12 | +0.8% | 19/25 | −1% | 4 / 3 |
+| Enterprise discovery | 12 | +7.7% | 30/30 | ~neutral | 5 / 0 |
+| E-commerce agency | 15 | +10.6% | 44/45 | −17% | 17 / 1 |
+| Health insurance | 10 | −1.4% full grid (+19.1% paired, deny profiles excluded) | 16/24 | −53% | 15 / 6 |
+
+*"Paired" keeps only trials whose governed run completed or halted on a finding attributable to a verified defect. Scoring the false-alarm halts as failed work instead, the governed arm is below the ungoverned arm in B2B, hospital, software dev and insurance. The validator defects behind the false alarms have since been fixed and validated offline on all saved outputs; a live re-run is pending.*
+
+<details><summary>Original July 2026 table (superseded)</summary>
+
 Across six controlled benchmarks and 500+ trials, on a unified deterministic 7-check rubric (0–7) with **no language model in the validation path or the scoring path**, Maat improved output correctness on **every benchmark** — and cut cost where it halted defective chains early.
 
 | Benchmark | Agents | Maat off | Maat on | Δ | Cost off | Cost on | Cost change |
@@ -52,27 +69,30 @@ Across six controlled benchmarks and 500+ trials, on a unified deterministic 7-c
 | E-commerce agency | 15 | 6.22 | 6.89 | **+10.7%** | $0.2090 | $0.1740 | **−17%** |
 | Health insurance | 10 | 5.667 | 5.833 | +2.9% | $0.0412 | $0.0185 | **−55%** |
 
-*Direction positive on every benchmark. On the insurance grid, 11 documented false positives remain — all `REQ_VALUE_MISMATCH` or `INFO_EMPTY` on two profiles (excluded treatment, fraud) where the model correctly denies the claim while the anchor’s expected payout still reflects the clean-claim value: an anchor-configuration boundary, reported in `results/` rather than tuned away.*
+*Direction positive on every benchmark (superseded: see correction above). On the insurance grid, 11 documented false positives remain — all `REQ_VALUE_MISMATCH` or `INFO_EMPTY` on two profiles (excluded treatment, fraud) where the model correctly denies the claim while the anchor’s expected payout still reflects the clean-claim value: an anchor-configuration boundary, reported in `results/` rather than tuned away.*
+
+</details>
 
 ### Specific defects caught
 
 Each benchmark injects a realistic defect and measures whether Maat catches it. Clean catches include:
 
 - **VAT/tax misclassification** — caught on **100%** of trials where it occurred (e-commerce and insurance). The error that triggers tax audits and retroactive liability.
-- **A revenue-reporting defect nobody injected** — the e-commerce analytics agent systematically mis-reported revenue on its own; Maat detected this genuine, un-planted error in **100%** of the cases its validation reached.
+- **A revenue-reporting defect nobody injected** — the e-commerce analytics agent systematically mis-reported revenue on its own; Maat flagged this genuine, un-planted error as a **warning** where its validation reached it, but did not stop the chain (now a blocking rule).
 - **Payout overpayment** — an inflated billed amount produced a €1,310 payout against a contract-correct €810 (a 61.7% overpayment); Maat compared it to the policy and halted before it reached the final report (insurance).
 - **Cross-marketplace price drift** — the same product priced 40% apart across three marketplaces (Amazon/eBay/Temu), detected and halted (e-commerce).
 - **Claimant identity drift** — a wrong policyholder ID propagating downstream, halted before a wrong-party payout and a GDPR breach (insurance).
 - **GDPR data-residency violation** — non-EU routing of special-category medical data, caught 100% of seeds (insurance).
-- **Contract scope creep and fabricated discounts** — blocked at the handoff, with ~58% cost savings on early halts (B2B, e-commerce).
+- **Contract scope creep and fabricated discounts** — blocked at the handoff, with ~58% cost savings on early halts (e-commerce). In B2B, fabricated discounts surfaced as deal totals that did not match line items and were stopped; the B2B scope check did not fire in the grid runs.
 
 ### The cost story
 
-On the workflows where Maat halted defective chains early, it cut wasted compute by up to **50%** — it stops a bad chain before the remaining agents burn tokens on poisoned data. Maat's own per-handoff cost is negligible: the gates are deterministic code, microseconds per check, no model call.
+On the workflows where Maat halted defective chains early, it cut wasted compute by up to **53%** (corrected, attributable halts only; the originally reported B2B and hospital savings partly came from false-alarm halts) — it stops a bad chain before the remaining agents burn tokens on poisoned data. Maat's own per-handoff cost is negligible: the gates are deterministic code, microseconds per check, no model call.
 
 ### Reported honestly
 
-- The **software-dev** benchmark shows the smallest lift (+3.8%): a code-release pipeline re-derives its own artifacts, so a single dropped field is often caught downstream anyway. We report this because it shows exactly where Maat earns its keep and where it may not.
+- **35 of 94 governed-arm halts were false alarms** on correct output, caused by validator defects (see `CORRECTIONS.md`). They are fixed and validated offline; a live re-run is pending.
+- The **software-dev** benchmark shows no material lift (+0.8% corrected; +3.8% originally reported): a code-release pipeline re-derives its own artifacts, so a single dropped field is often caught downstream anyway. We report this because it shows exactly where Maat earns its keep and where it may not.
 - Several injected defects **did not manifest** because the tested model self-corrected — a governance layer cannot catch a defect the agents decline to make. We treat these as model-dependent, not universal, and propose them as pilot experiments.
 - Full per-profile detail, including every non-manifesting profile and every false-positive check, is in `results/`.
 

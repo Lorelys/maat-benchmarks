@@ -1,5 +1,7 @@
 # controlled_ecommerce_agency — Deterministic Re-score (7 business checks)
 
+> **Correction (September 2026).** Halted governed trials here were credited `halt_prevented_defect` when *any* blocker fired, not only a finding matching the injected defect (1 of 18 intervene halts was unrelated). The un-injected revenue mis-report was recorded as a warning and did not stop the chain. See [`CORRECTIONS.md`](../../../CORRECTIONS.md).
+
 **Transcripts:** 136 from `experiments/runs/controlled_ecommerce_agency/grid`
 **Scorer:** `scorer_deterministic.py` — 7 boolean checks (0–7), zero LLM.
 **Legacy scorer:** `scorer.py` — 0–15, zero LLM.

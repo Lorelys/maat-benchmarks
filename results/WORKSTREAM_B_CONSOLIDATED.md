@@ -1,5 +1,7 @@
 # Workstream B — Six-Benchmark Consolidated Deterministic Re-score
 
+> **Correction (September 2026).** The 7-check means in this table credit every governed-arm halt as a prevented defect in B2B, hospital and software development, and any blocker in e-commerce and insurance. The insurance line "zero false positives" is incorrect. Corrected figures: [`CORRECTIONS.md`](../CORRECTIONS.md).
+
 **Rubric philosophy:** ~7 business-meaningful boolean checks per benchmark (0–7 scale; e-commerce legacy scorer remains 0–15 for continuity). Zero LLM in all scorers.
 
 ## Methodology: original scorers were LLM-judge?

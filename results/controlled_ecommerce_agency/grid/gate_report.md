@@ -1,5 +1,7 @@
 # E-Commerce Agency — Gate Report
 
+> **Correction (September 2026).** The manifestation check used in section (e) mis-read some ungoverned outputs: several `REQ_DISCOUNT_EXCEEDED` blockers listed as false positives flagged a real 30% discount against a 15% authorization. Of the 18 intervene halts, 1 was a false alarm on review. See [`CORRECTIONS.md`](../../../CORRECTIONS.md).
+
 Trials analyzed: **135** (9 profiles × 3 arms × 5 seeds)
 Source: `/Users/ulianaelina/maat-api/experiments/runs/controlled_ecommerce_agency/grid`
 

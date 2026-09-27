@@ -1,5 +1,7 @@
 # Maat — Gate Results Specification
 
+> **Correction (September 2026).** Per-gate halt counts in this document include false-alarm halts (35 of 94 governed-arm halts on review). The insurance per-arm means and the "intervene beats off" statement below are superseded. See [`CORRECTIONS.md`](CORRECTIONS.md).
+
 ## Per-Gate Behavior and Evidence Across Six Controlled Benchmarks
 
 **Companion document to the Maat whitepaper · Draft · July 2026**

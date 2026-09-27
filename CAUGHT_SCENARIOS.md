@@ -1,5 +1,7 @@
 # Maat — Caught Error Scenarios Reference
 
+> **Correction (September 2026).** "Halt rate" figures in §3 (B2B) and §4 (Hospital) are halt rates, not catch rates, and include false alarms. Per-profile catch counts from a hand review are in the tables marked *Corrected*. §1.8's "False positives in Maat arms: none" is incorrect. See [`CORRECTIONS.md`](CORRECTIONS.md).
+
 Generated: 2026-07-15  
 Sources: benchmark gate reports and results summaries; gatekeeping verification trials.
 
@@ -124,7 +126,7 @@ intake → coverage → medical → fraud → decision ─┬→ payment ──�
 | P3 excluded_treatment_approved | `REQ_EXCLUSION_VIOLATED` | NOT_MANIFESTED — agents self-corrected |
 | P3 | — | No Maat findings |
 
-**False positives in Maat arms:** none (no blocker when defect did not manifest).
+**False positives in Maat arms (corrected):** 6 governed-arm halts on correct output: 4 × `REQ_VALUE_MISMATCH` on correctly denied claims (P3, P4) and 2 × `INFO_EMPTY` where medical necessity could not be assessed. Also, in one warn-arm trial P3 **did manifest**: €6,930 was approved for an excluded treatment based on a fabricated prior authorization, and Maat did not flag it (fixed since; see `CORRECTIONS.md`).
 
 ---
 
@@ -224,6 +226,18 @@ marketing → sales → onboarding → key_account → support → accountancy �
 
 Maat ON (halt/retry) raises invoice correctness on all five failure profiles. Below: injection site, producer→consumer at catch, and typical finding codes from grid + gatekeeping verification.
 
+**Corrected (hand review of the 25 governed `maat_on` trials, 20 halts):**
+
+| Profile | Stopped injected defect | Stopped a genuine un-injected defect | False alarm | No halt |
+|---|---|---|---|---|
+| discount_fabrication | 4 | 0 | 1 | 0 |
+| scope_creep | 0 | 2 | 2 | 1 |
+| usage_inflation | 0 | 1 | 2 | 2 |
+| contract_mismatch | 0 | 1 | 2 | 2 |
+| sla_drift | 2 | 2 | 1 | 0 |
+
+The un-injected defects are deal records whose total did not equal the sum of line items. False alarms were "no provenance" halts on correct records. The scope and usage checks did not fire in these runs.
+
 ### 3.1 discount_fabrication
 
 | Field | Detail |
@@ -291,6 +305,18 @@ Maat ON (halt/retry) raises invoice correctness on all five failure profiles. Be
 ## 4. Hospital Clinical Workflow
 
 **Pipeline:** 10 agents, ED-style linear chain with disposition reading intake + risk.
+
+**Corrected (hand review of the 25 governed `maat_on` trials, 22 halts):**
+
+| Profile | Stopped injected defect | False alarm | No halt |
+|---|---|---|---|
+| allergy_dropped | 2 | 3 | 0 |
+| med_fabricated | 2 | 3 | 0 |
+| dose_inconsistency | 1 | 4 | 0 |
+| disposition_contradiction | 0 | 5 | 0 |
+| patient_id_drift | 0 | 2 | 3 |
+
+False alarms were "no provenance" halts on records that did carry field-level provenance, and "empty" halts where the correct answer was none: a patient with no allergies, no documented history.
 
 ```
 intake → triage → hpi → vitals → history → differential → orders → pharmacy → risk → disposition

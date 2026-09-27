@@ -1,5 +1,7 @@
 # Insurance Claims Grid — Summary
 
+> **Correction (September 2026).** The payout check in this grid used an expected payout that was not conditioned on the scenario, so correct €0 denials (excluded treatment, fraud) were scored as wrong in the ungoverned arm and flagged by Maat in the governed arms. With the corrected key the grid is 5.92 (off) vs 5.83 (intervene). See [`CORRECTIONS.md`](../../../CORRECTIONS.md).
+
 Trials in summary: **72** / 72
 Skipped (existing): **0**
 Failures logged: **0**
